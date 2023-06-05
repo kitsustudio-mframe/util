@@ -149,14 +149,11 @@ lang::ReadBuffer& CommandExecutor::in(void) {
 //-----------------------------------------------------------------------------------------
 bool CommandExecutor::putCommand(const char* command, CommandHandler& commandHandler) {
   int hashcode = HashGen::getHashcodeLowerCast(command);
-  this->out() << "add command: " << command << "  hashcode: " << hashcode << "\n";
   
   if (this->mCommandMap.containsKeyHash(hashcode)){
-    this->out() << "command is exist\n";
     return false;
   }
     
-
   this->mCommandMap.putHash(hashcode, &commandHandler);
   return true;
 }
