@@ -14,6 +14,7 @@
 /* ****************************************************************************************
  * Include
  */
+#include "Base64.h"
 #include "CommandExecutor.h"
 #include "CommandHandler.h"
 #include "CommandHandlerEvent.h"

@@ -413,6 +413,16 @@
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
             </File>
+            <File>
+              <FileName>Base64.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Base64.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Base64.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -824,6 +834,16 @@
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
             </File>
+            <File>
+              <FileName>Base64.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Base64.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Base64.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -1234,6 +1254,16 @@
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Base64.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Base64.h</FilePath>
             </File>
           </Files>
         </Group>
