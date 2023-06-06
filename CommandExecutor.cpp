@@ -80,7 +80,7 @@ void CommandExecutor::execute(void) {
     if(this->mCommandHandler)
       break;
     
-    this->mInput.getByte(this->mSplitCharacter);
+    this->mInput.pollByte(this->mSplitCharacter);
     switch (this->mSplitCharacter) {
       case '\0':
       case '\r':
@@ -131,7 +131,7 @@ bool CommandExecutor::onCommand(CommandExecutor& executor) {
 
   while (executor.in().avariable()) {
     char c;
-    executor.in().getByte(c);
+    executor.in().pollByte(c);
     switch (c) {
       case '\0':
       case '\r':
