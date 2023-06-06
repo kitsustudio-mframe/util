@@ -41,6 +41,9 @@ class util::CommandHandlerMethod : public lang::FunctionMethod<C, CommandExecuto
   /* **************************************************************************************
    * Variable <Private>
    */
+ private:
+  const char* mCommand;
+  const char* mDescription;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -54,7 +57,18 @@ class util::CommandHandlerMethod : public lang::FunctionMethod<C, CommandExecuto
    * Construct Method
    */
  public:
-  CommandHandlerMethod(C& c, bool (C::*method)(CommandExecutor&)) : lang::FunctionMethod<C, CommandExecutor&, bool>(c, method) {
+  CommandHandlerMethod(C& c,
+                       bool (C::*method)(CommandExecutor&),
+                       const char* command,
+                       const char* description) : lang::FunctionMethod<C, CommandExecutor&, bool>(c, method) {
+    this->mDescription = description;
+    this->mCommand = command;
+    return;
+  }
+
+  CommandHandlerMethod(C& c,
+                       bool (C::*method)(CommandExecutor&),
+                       const char* command) : CommandHandlerMethod(c, method, command, "no description.") {
     return;
   }
 
@@ -74,13 +88,14 @@ class util::CommandHandlerMethod : public lang::FunctionMethod<C, CommandExecuto
    * Public Method <Override>
    */
  public:
-  /**
-   * @brief
-   *
-   * @param executor 執行處理器
-   * @return true 結束指令處理，返回執行權
-   * @return false 尚未結束指令處理，時序保持執行權
-   */
+  virtual const char* getDescription(void) override {
+    return this->mDescription;
+  }
+
+  virtual const char* getCommand(void) override {
+    return this->mCommand;
+  }
+
   virtual bool onCommand(CommandExecutor& executor) override {
     return this->apply(executor);
   }

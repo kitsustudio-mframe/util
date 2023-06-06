@@ -35,6 +35,20 @@ struct util::CommandHandler : public virtual lang::Interface{
    */
 
   /**
+   * @brief 使令描述
+   * 
+   * @return const char* 
+   */
+  virtual const char* getDescription(void) abstract;
+
+  /**
+   * @brief Get the Command object
+   * 
+   * @return const char* 
+   */
+  virtual const char* getCommand(void) abstract;
+
+  /**
    * @brief 
    * 
    * @param executor 執行處理器

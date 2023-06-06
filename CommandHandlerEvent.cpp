@@ -36,15 +36,22 @@ using util::CommandHandlerEvent;
  */
 
 //-----------------------------------------------------------------------------------------
-CommandHandlerEvent::CommandHandlerEvent(bool (*func)(CommandExecutor& executor)){
-  if(func == nullptr)
+CommandHandlerEvent::CommandHandlerEvent(bool (*func)(CommandExecutor& executor), const char* command, const char* descirption) {
+  if (func == nullptr)
     System::error(this, ErrorCode::NULL_POINTER);
-  
+
+  this->mCommand = command;
+  this->mDescription = descirption;
   this->mFunc = func;
 }
 
 //-----------------------------------------------------------------------------------------
-CommandHandlerEvent::~CommandHandlerEvent(void){
+CommandHandlerEvent::CommandHandlerEvent(bool (*func)(CommandExecutor& executor), const char* command) : CommandHandlerEvent(func, command, "do description.") {
+  return;
+}
+
+//-----------------------------------------------------------------------------------------
+CommandHandlerEvent::~CommandHandlerEvent(void) {
   return;
 }
 
@@ -60,8 +67,17 @@ CommandHandlerEvent::~CommandHandlerEvent(void){
  * Public Method <Override>
  */
 
+const char* CommandHandlerEvent::getDescription(void) {
+  return this->mDescription;
+}
+
 //-----------------------------------------------------------------------------------------
-bool CommandHandlerEvent::onCommand(CommandExecutor& executor){
+const char* CommandHandlerEvent::getCommand(void) {
+  return this->mCommand;
+}
+
+//-----------------------------------------------------------------------------------------
+bool CommandHandlerEvent::onCommand(CommandExecutor& executor) {
   return this->mFunc(executor);
 }
 

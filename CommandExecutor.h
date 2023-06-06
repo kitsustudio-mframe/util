@@ -49,6 +49,7 @@ class util::CommandExecutor : public lang::Object,
   CommandHandler* mCommandHandler;
   void* mAttachment;
   char mSplitCharacter;
+  bool mEchoEnable;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -96,6 +97,10 @@ class util::CommandExecutor : public lang::Object,
    * Public Method <Override> - util::CommandHandler
    */
  public:
+  virtual const char* getDescription(void) override;
+  
+  virtual const char* getCommand(void) override;
+
   virtual bool onCommand(CommandExecutor& executor) override;
 
   /* **************************************************************************************
@@ -129,7 +134,7 @@ class util::CommandExecutor : public lang::Object,
    *
    * @return char
    */
-  inline char getSplitCharacter(void){
+  inline char getSplitCharacter(void) {
     return this->mSplitCharacter;
   }
 
@@ -159,7 +164,7 @@ class util::CommandExecutor : public lang::Object,
    * @return true 成功新增指令
    * @return false 新增指令失敗，指令已存在
    */
-  virtual bool putCommand(const char* command, CommandHandler& commandHandler);
+  virtual bool put(CommandHandler& commandHandler);
 
   /**
    * @brief 取得指令
@@ -169,7 +174,7 @@ class util::CommandExecutor : public lang::Object,
    *  - nullptr 指令未找到
    *  - other 指令執行程序
    */
-  virtual CommandHandler* getCommand(const char* command);
+  virtual CommandHandler* get(const char* command);
 
   /**
    * @brief 移除指令
@@ -178,7 +183,7 @@ class util::CommandExecutor : public lang::Object,
    * @return true 成功找到指令並移除
    * @return false 尚未找到指令
    */
-  virtual bool removeCommand(const char* command);
+  virtual bool remove(const char* command);
 
   /**
    * @brief Get the Buffer object
@@ -186,6 +191,13 @@ class util::CommandExecutor : public lang::Object,
    * @return Strings&
    */
   virtual Strings& getBuffer(void);
+
+  /**
+   * @brief 啟用輸入自動回復
+   * 
+   * @param enable 啟用
+   */
+  virtual void echoEnable(bool enable);
 
   /* **************************************************************************************
    * Protected Method <Static>

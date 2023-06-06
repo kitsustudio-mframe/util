@@ -41,6 +41,8 @@ class util::CommandHandlerEvent : public lang::Object,
    */
   private:
     bool (*mFunc)(CommandExecutor& executor);
+    const char* mCommand;
+    const char* mDescription;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -56,10 +58,20 @@ class util::CommandHandlerEvent : public lang::Object,
  public:
   /**
    * @brief Construct a new Command Handler Event object
-   *
-   * @param func
+   * 
+   * @param func 
+   * @param command 指令
+   * @param descirption 指令描述
    */
-  CommandHandlerEvent(bool (*func)(CommandExecutor& executor));
+  CommandHandlerEvent(bool (*func)(CommandExecutor& executor), const char* command, const char* descirption);
+
+  /**
+   * @brief Construct a new Command Handler Event object
+   * 
+   * @param func 
+   * @param command 指令
+   */
+  CommandHandlerEvent(bool (*func)(CommandExecutor& executor), const char* command);
 
   /**
    * @brief Destroy the Command Handler Event object
@@ -79,13 +91,10 @@ class util::CommandHandlerEvent : public lang::Object,
    * Public Method <Override> - util::CommandHandler
    */
  public:
-  /**
-   * @brief
-   *
-   * @param executor 執行處理器
-   * @return true 結束指令處理，返回執行權
-   * @return false 尚未結束指令處理，時序保持執行權
-   */
+  virtual const char* getDescription(void) override;
+
+  virtual const char* getCommand(void) override;
+
   virtual bool onCommand(CommandExecutor& executor) override;
   /* **************************************************************************************
    * Public Method

@@ -43,6 +43,8 @@ CommandExecutor::CommandExecutor(int mapSize, int commandSize,
                                                             mOutput(output),
                                                             mInput(input) {
   this->mCommandHandler = nullptr;
+  this->mEchoEnable = false;
+  return;
 }
 
 //-----------------------------------------------------------------------------------------
@@ -107,8 +109,20 @@ void CommandExecutor::execute(void) {
 }
 
 /* ****************************************************************************************
- * Public Method <Override> - util::COmmandHandler
+ * Public Method <Override> - util::CommandHandler
  */
+
+
+const char* CommandExecutor::getDescription(void){
+  return "no description.";
+}
+
+//-----------------------------------------------------------------------------------------
+const char* CommandExecutor::getCommand(void){
+  return "unknown";
+}
+
+//-----------------------------------------------------------------------------------------
 bool CommandExecutor::onCommand(CommandExecutor& executor) {
   if (this->getSplitCharacter() == '\n') {
     executor.out() << "unknown command.\n";
@@ -147,8 +161,8 @@ lang::ReadBuffer& CommandExecutor::in(void) {
 }
 
 //-----------------------------------------------------------------------------------------
-bool CommandExecutor::putCommand(const char* command, CommandHandler& commandHandler) {
-  int hashcode = HashGen::getHashcodeLowerCast(command);
+bool CommandExecutor::put(CommandHandler& commandHandler) {
+  int hashcode = HashGen::getHashcodeLowerCast(commandHandler.getCommand());
   
   if (this->mCommandMap.containsKeyHash(hashcode)){
     return false;
@@ -160,14 +174,14 @@ bool CommandExecutor::putCommand(const char* command, CommandHandler& commandHan
 
 //-----------------------------------------------------------------------------------------
 
-util::CommandHandler* CommandExecutor::getCommand(const char* command) {
+util::CommandHandler* CommandExecutor::get(const char* command) {
   Strings s = Strings(command);
   return this->mCommandMap.get(s);
 }
 
 //-----------------------------------------------------------------------------------------
 
-bool CommandExecutor::removeCommand(const char* command) {
+bool CommandExecutor::remove(const char* command) {
   Strings s = Strings(command);
   if (this->mCommandMap.containsKey(s))
     return false;
@@ -179,6 +193,11 @@ bool CommandExecutor::removeCommand(const char* command) {
 //-----------------------------------------------------------------------------------------
 Strings& CommandExecutor::getBuffer(void) {
   return this->mBuffer;
+}
+
+//-----------------------------------------------------------------------------------------
+void CommandExecutor::echoEnable(bool enable){
+  this->mEchoEnable = enable;
 }
 
 /* ****************************************************************************************
