@@ -237,6 +237,10 @@ int Scanner::getNextLineLength(void) {
   return -1;
 }
 
+//-----------------------------------------------------------------------------------------
+lang::ReadBuffer& Scanner::getReadBuffer(void){
+  return this->mReadBuffer;
+}
 /* ****************************************************************************************
  * Protected Method <Static>
  */

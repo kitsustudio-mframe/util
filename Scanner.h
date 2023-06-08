@@ -89,7 +89,7 @@ class util::Scanner : public lang::Object {
    * @return true 滿足。
    * @return false 不滿足。
    */
-  bool hasNext(void);
+  virtual bool hasNext(void);
 
   /**
    * @brief 取得緩衝區是否擁有指定的字元。
@@ -97,7 +97,7 @@ class util::Scanner : public lang::Object {
    * @return true 滿足。
    * @return false 不滿足。
    */
-  bool hasNextChar(char ch);
+  virtual bool hasNextChar(char ch);
 
   /**
    * @brief 取得緩衝區是否滿足一個布林值。
@@ -105,7 +105,7 @@ class util::Scanner : public lang::Object {
    * @return true 滿足。
    * @return false 不滿足。
    */
-  bool hasNextBoolean(void);
+  virtual bool hasNextBoolean(void);
 
   /**
    * @brief 取得緩衝區是否滿足一個整數。
@@ -113,7 +113,7 @@ class util::Scanner : public lang::Object {
    * @return true 滿足。
    * @return false 不滿足。
    */
-  bool hasNextInteger(void);
+  virtual bool hasNextInteger(void);
 
   /**
    * @brief 取得緩衝區是否滿足一行。
@@ -121,7 +121,7 @@ class util::Scanner : public lang::Object {
    * @return true 滿足。
    * @return false 不滿足。
    */
-  bool hasNextLine(void);
+  virtual bool hasNextLine(void);
 
   /**
    * @brief 取得煥沖區是否滿足一個字幅串。
@@ -129,7 +129,7 @@ class util::Scanner : public lang::Object {
    * @return true 滿足。
    * @return false 不滿足。
    */
-  bool hasNextString(void);
+  virtual bool hasNextString(void);
 
   /**
    * @brief 取得下一個布林值。
@@ -138,7 +138,7 @@ class util::Scanner : public lang::Object {
    * @return true 取得成功，從緩衝區推出一個布林值。
    * @return false 取得失敗，可能問題如下：
    */
-  bool nextBoolean(bool& result);
+  virtual bool nextBoolean(bool& result);
 
   /**
    * @brief 取得下一行。
@@ -152,7 +152,7 @@ class util::Scanner : public lang::Object {
    * - 緩衝區為空。
    * - 資料尚未滿足一行。
    */
-  bool nextLine(Data& result);
+  virtual bool nextLine(Data& result);
 
   /**
    * @brief 取得下一個整數。
@@ -164,7 +164,7 @@ class util::Scanner : public lang::Object {
    * - 緩衝區為空。
    * - 資料格式不為整數。
    */
-  bool nextInteger(int& result);
+  virtual bool nextInteger(int& result);
 
   /**
    * @brief 取得下一個字元。
@@ -173,7 +173,7 @@ class util::Scanner : public lang::Object {
    * @return true 取得成功，從緩存區推出一個字元。
    * @return false 取得失敗，緩衝區為空。
    */
-  bool nextChar(char& result);
+  virtual bool nextChar(char& result);
 
   /**
    * @brief 取得下一個字幅串。
@@ -188,7 +188,7 @@ class util::Scanner : public lang::Object {
    *  - result 內有效空間不足進行寫入。請使用getNextLength()來判斷緩衝區內資料大於result有效空間。
    *  - 緩衝區內不滿足一個字符串的條件，因緩衝區尚未出現NextSymbol<'/r','/n','/t','/0',' '>。
    */
-  bool nextString(Data& result);
+  virtual bool nextString(Data& result);
 
   /**
    * @brief 跳躍直到發現指定字元。
@@ -199,7 +199,7 @@ class util::Scanner : public lang::Object {
    *  - -1 : 緩衝區內並未找到pattern。
    *  - 0~ : 跳躍的字元數量。
    */
-  int skip(char pattern);
+  virtual int skip(char pattern);
 
   /**
    * @brief 跳躍當前字幅串。
@@ -209,7 +209,7 @@ class util::Scanner : public lang::Object {
    *  - -1 : 緩衝區內不滿足一個字符串的條件，因緩衝區尚未出現NextSymbol<'/r','/n','/t','/0',' '>。
    *  - 0~ : 跳躍的字幅串字元數量。
    */
-  int skipNext(void);
+  virtual int skipNext(void);
 
   /**
    * @brief 跳躍當前行至下一行。
@@ -219,7 +219,7 @@ class util::Scanner : public lang::Object {
    *  - -1 : 緩衝區內不滿足一個字符串的條件，因緩衝區尚未出現NextLineSymbol<'/r','/n','/0'>。
    *  - 0~ : 跳躍的字幅串字元數量。
    */
-  int skipNextLine(void);
+  virtual int skipNextLine(void);
 
   /**
    * @brief 取得至下一個字幅串的字元數量
@@ -229,7 +229,7 @@ class util::Scanner : public lang::Object {
    *  - -1 : 緩衝區內不滿足一個字符串的條件，因緩衝區尚未出現NextSymbol<'/r','/n','/t','/0',' '>。
    *  - 0~ : 至下一個字幅串的字元數量。
    */
-  int getNextLength(void);
+  virtual int getNextLength(void);
 
   /**
    * @brief 取得至下一行的字幅串數量
@@ -239,7 +239,14 @@ class util::Scanner : public lang::Object {
    *  - -1 : 緩衝區內不滿足一個字符串的條件，因緩衝區尚未出現NextSymbol<'/r','/n','/0'>。
    *  - 0~ : 至下一個字幅串的字元數量。
    */
-  int getNextLineLength(void);
+  virtual int getNextLineLength(void);
+
+  /**
+   * @brief 取得緩衝區來源
+   * 
+   * @return lang::ReadBuffer& 
+   */
+  virtual lang::ReadBuffer& getReadBuffer(void);
 
   /* **************************************************************************************
    * Protected Method <Static>
