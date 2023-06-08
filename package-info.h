@@ -19,6 +19,7 @@
 #include "CommandHandler.h"
 #include "CommandHandlerEvent.h"
 #include "CommandHandlerMethod.h"
+#include "Scanner.h"
 
 /* ****************************************************************************************
  * End of file
