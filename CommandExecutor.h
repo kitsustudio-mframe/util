@@ -16,6 +16,8 @@
 
 //-----------------------------------------------------------------------------------------
 #include "./CommandHandler.h"
+#include "./CommandHandlerDefaultHelp.h"
+#include "./Scanner.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -28,12 +30,12 @@ namespace util {
  * Class/Interface/Struct/Enum
  */
 class util::CommandExecutor : public lang::Object,
-                              public lang::Executor,
-                              public util::CommandHandler {
+                              public lang::Executor {
   /* **************************************************************************************
    * Variable <Public>
    */
-
+  public:
+    static const char* TEXT_UNKNOWN_COMMAND;
   /* **************************************************************************************
    * Variable <Protected>
    */
@@ -42,10 +44,12 @@ class util::CommandExecutor : public lang::Object,
    * Variable <Private>
    */
  private:
-  ArrayMap<CommandHandler> mCommandMap;
+  ArrayMap<lang::Object, CommandHandler> mCommandMap;
+  CommandHandlerDefaultHelp mCommandHandlerDefaultHelp;
   Strings mBuffer;
+  util::Scanner mInput;
   lang::PrintBuffer& mOutput;
-  lang::ReadBuffer& mInput;
+
   CommandHandler* mCommandHandler;
   void* mAttachment;
   char mSplitCharacter;
@@ -92,16 +96,6 @@ class util::CommandExecutor : public lang::Object,
    */
  public:
   virtual void execute(void) override;
-
-  /* **************************************************************************************
-   * Public Method <Override> - util::CommandHandler
-   */
- public:
-  virtual const char* getDescription(void) override;
-  
-  virtual const char* getCommand(void) override;
-
-  virtual bool onCommand(CommandExecutor& executor) override;
 
   /* **************************************************************************************
    * Public Method <Inline>
@@ -154,7 +148,7 @@ class util::CommandExecutor : public lang::Object,
    *
    * @return lang::ReadBuffer&
    */
-  virtual lang::ReadBuffer& in(void);
+  virtual util::Scanner& in(void);
 
   /**
    * @brief 新增指令
@@ -194,7 +188,7 @@ class util::CommandExecutor : public lang::Object,
 
   /**
    * @brief 啟用輸入自動回復
-   * 
+   *
    * @param enable 啟用
    */
   virtual void echoEnable(bool enable);

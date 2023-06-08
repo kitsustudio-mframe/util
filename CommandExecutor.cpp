@@ -30,6 +30,7 @@ using util::CommandExecutor;
 /* ****************************************************************************************
  * Variable <Static>
  */
+const char* CommandExecutor::TEXT_UNKNOWN_COMMAND = "unknown command please try command help.\n";
 
 /* ****************************************************************************************
  * Construct Method
@@ -39,11 +40,13 @@ using util::CommandExecutor;
 CommandExecutor::CommandExecutor(int mapSize, int commandSize,
                                  lang::PrintBuffer& output,
                                  lang::ReadBuffer& input) : mCommandMap(mapSize),
+                                                            mCommandHandlerDefaultHelp(Iterator<CommandHandler*>(mCommandMap)),
                                                             mBuffer(static_cast<size_t>(commandSize)),
-                                                            mOutput(output),
-                                                            mInput(input) {
+                                                            mInput(input),
+                                                            mOutput(output) {
   this->mCommandHandler = nullptr;
   this->mEchoEnable = false;
+  this->put(this->mCommandHandlerDefaultHelp);
   return;
 }
 
@@ -66,85 +69,27 @@ CommandExecutor::~CommandExecutor(void) {
 
 //-----------------------------------------------------------------------------------------
 void CommandExecutor::execute(void) {
-  if (this->mCommandHandler) {
-    if (this->mCommandHandler->onCommand(*this)){
-      this->mCommandHandler = nullptr;
-      this->mBuffer.clear();
-    }
+  if(!this->mInput.hasNextLine())
+    return;
 
-    else
-      return;
+  this->mInput.nextString(this->mBuffer);
+  Hashcode h = Hashcode(HashGen::getHashcodeLowerCast(this->mBuffer));
+  
+  CommandHandler* commandHandler = this->mCommandMap.get(h);
+  if(commandHandler)
+    commandHandler->onCommand(*this);
+
+  else{
+    this->out() <<'\'' << this->mBuffer << "\' " << CommandExecutor::TEXT_UNKNOWN_COMMAND;
+    this->in().skipNextLine();
   }
-
-  while (this->mInput.avariable()) {
-    if(this->mCommandHandler)
-      break;
-    
-    this->mInput.pollByte(this->mSplitCharacter);
-    switch (this->mSplitCharacter) {
-      case '\0':
-      case '\r':
-      case '\n':
-        this->mSplitCharacter = '\n';
-      
-      case ' ':
-      case ';':
-        if(this->mBuffer.isEmpty())
-          break;
-      
-        this->mCommandHandler = static_cast<CommandHandler*>(this->mCommandMap.getHash(this->mBuffer.hashcodeLowerCast()));
-      
-        if (this->mCommandHandler == nullptr)
-          this->mCommandHandler = this;
-        
-        break;
-
-      default:
-        this->mBuffer += (this->mSplitCharacter);
-        break;
-    }
-  }
-
+  
   return;
 }
 
 /* ****************************************************************************************
  * Public Method <Override> - util::CommandHandler
  */
-
-
-const char* CommandExecutor::getDescription(void){
-  return "no description.";
-}
-
-//-----------------------------------------------------------------------------------------
-const char* CommandExecutor::getCommand(void){
-  return "unknown";
-}
-
-//-----------------------------------------------------------------------------------------
-bool CommandExecutor::onCommand(CommandExecutor& executor) {
-  if (this->getSplitCharacter() == '\n') {
-    executor.out() << "unknown command.\n";
-    return true;
-  }
-
-  while (executor.in().avariable()) {
-    char c;
-    executor.in().pollByte(c);
-    switch (c) {
-      case '\0':
-      case '\r':
-      case '\n':
-        executor.out() << "unknown command.\n";
-        return true;
-
-      default:
-        break;
-    }
-  }
-  return false;
-}
 
 /* ****************************************************************************************
  * Public Method
@@ -156,27 +101,27 @@ lang::PrintBuffer& CommandExecutor::out(void) {
 }
 
 //-----------------------------------------------------------------------------------------
-lang::ReadBuffer& CommandExecutor::in(void) {
+util::Scanner& CommandExecutor::in(void) {
   return this->mInput;
 }
 
 //-----------------------------------------------------------------------------------------
 bool CommandExecutor::put(CommandHandler& commandHandler) {
-  int hashcode = HashGen::getHashcodeLowerCast(commandHandler.getCommand());
+  Hashcode h = Hashcode(HashGen::getHashcodeLowerCast(commandHandler.getCommand()));
   
-  if (this->mCommandMap.containsKeyHash(hashcode)){
+  if (this->mCommandMap.containsKey(h)) {
     return false;
   }
-    
-  this->mCommandMap.putHash(hashcode, &commandHandler);
+
+  this->mCommandMap.put(h, &commandHandler);
   return true;
 }
 
 //-----------------------------------------------------------------------------------------
 
 util::CommandHandler* CommandExecutor::get(const char* command) {
-  Strings s = Strings(command);
-  return this->mCommandMap.get(s);
+  Hashcode h = Hashcode(HashGen::getHashcodeLowerCast(command));
+  return this->mCommandMap.get(h);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -196,7 +141,7 @@ Strings& CommandExecutor::getBuffer(void) {
 }
 
 //-----------------------------------------------------------------------------------------
-void CommandExecutor::echoEnable(bool enable){
+void CommandExecutor::echoEnable(bool enable) {
   this->mEchoEnable = enable;
 }
 
