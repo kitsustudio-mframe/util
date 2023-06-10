@@ -384,6 +384,66 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
+              <FileName>Array.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Array.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayMap.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMapPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayMapPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMapPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayMapPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueue.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueuePrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Base64.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Base64.h</FilePath>
+            </File>
+            <File>
+              <FileName>Collection.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Collection.h</FilePath>
+            </File>
+            <File>
               <FileName>CommandExecutor.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\CommandExecutor.cpp</FilePath>
@@ -419,19 +479,39 @@
               <FilePath>.\CommandHandlerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>CommandHandlerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\CommandHandlerMethod.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterator.h</FilePath>
+            </File>
+            <File>
+              <FileName>Map.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Map.h</FilePath>
+            </File>
+            <File>
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
             </File>
             <File>
-              <FileName>Base64.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Base64.cpp</FilePath>
+              <FileName>Pool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Pool.h</FilePath>
             </File>
             <File>
-              <FileName>Base64.h</FileName>
+              <FileName>Queue.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Base64.h</FilePath>
+              <FilePath>.\Queue.h</FilePath>
+            </File>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
             </File>
             <File>
               <FileName>Scanner.cpp</FileName>
@@ -442,6 +522,21 @@
               <FileName>Scanner.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Scanner.h</FilePath>
+            </File>
+            <File>
+              <FileName>Updater.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Updater.h</FilePath>
+            </File>
+            <File>
+              <FileName>Future.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Future.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Future.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Future.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -825,6 +920,66 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
+              <FileName>Array.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Array.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayMap.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMapPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayMapPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMapPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayMapPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueue.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueuePrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Base64.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Base64.h</FilePath>
+            </File>
+            <File>
+              <FileName>Collection.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Collection.h</FilePath>
+            </File>
+            <File>
               <FileName>CommandExecutor.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\CommandExecutor.cpp</FilePath>
@@ -860,19 +1015,39 @@
               <FilePath>.\CommandHandlerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>CommandHandlerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\CommandHandlerMethod.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterator.h</FilePath>
+            </File>
+            <File>
+              <FileName>Map.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Map.h</FilePath>
+            </File>
+            <File>
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
             </File>
             <File>
-              <FileName>Base64.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Base64.cpp</FilePath>
+              <FileName>Pool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Pool.h</FilePath>
             </File>
             <File>
-              <FileName>Base64.h</FileName>
+              <FileName>Queue.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Base64.h</FilePath>
+              <FilePath>.\Queue.h</FilePath>
+            </File>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
             </File>
             <File>
               <FileName>Scanner.cpp</FileName>
@@ -883,6 +1058,21 @@
               <FileName>Scanner.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Scanner.h</FilePath>
+            </File>
+            <File>
+              <FileName>Updater.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Updater.h</FilePath>
+            </File>
+            <File>
+              <FileName>Future.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Future.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Future.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Future.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1266,6 +1456,66 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
+              <FileName>Array.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Array.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayMap.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMapPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayMapPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayMapPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayMapPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayPrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayPrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayPrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueue.h</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ArrayQueuePrototype.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ArrayQueuePrototype.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ArrayQueuePrototype.h</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Base64.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Base64.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Base64.h</FilePath>
+            </File>
+            <File>
+              <FileName>Collection.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Collection.h</FilePath>
+            </File>
+            <File>
               <FileName>CommandExecutor.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\CommandExecutor.cpp</FilePath>
@@ -1301,19 +1551,39 @@
               <FilePath>.\CommandHandlerEvent.h</FilePath>
             </File>
             <File>
+              <FileName>CommandHandlerMethod.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\CommandHandlerMethod.h</FilePath>
+            </File>
+            <File>
+              <FileName>Iterator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Iterator.h</FilePath>
+            </File>
+            <File>
+              <FileName>Map.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Map.h</FilePath>
+            </File>
+            <File>
               <FileName>package-info.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\package-info.h</FilePath>
             </File>
             <File>
-              <FileName>Base64.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Base64.cpp</FilePath>
+              <FileName>Pool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Pool.h</FilePath>
             </File>
             <File>
-              <FileName>Base64.h</FileName>
+              <FileName>Queue.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Base64.h</FilePath>
+              <FilePath>.\Queue.h</FilePath>
+            </File>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
             </File>
             <File>
               <FileName>Scanner.cpp</FileName>
@@ -1324,6 +1594,21 @@
               <FileName>Scanner.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Scanner.h</FilePath>
+            </File>
+            <File>
+              <FileName>Updater.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Updater.h</FilePath>
+            </File>
+            <File>
+              <FileName>Future.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Future.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Future.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Future.h</FilePath>
             </File>
           </Files>
         </Group>

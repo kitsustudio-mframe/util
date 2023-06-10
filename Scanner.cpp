@@ -8,11 +8,10 @@
 /* ****************************************************************************************
  * Include
  */
+#include "./Scanner.h"
 
 //-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-#include "util/Scanner.h"
+#include "mframe_lang.h"
 
 /* ****************************************************************************************
  * Macro
@@ -36,7 +35,7 @@ using util::Scanner;
  */
 
 //-----------------------------------------------------------------------------------------
-Scanner::Scanner(lang::ReadBuffer& readBuffer) : mReadBuffer(readBuffer),
+Scanner::Scanner(io::ReadBuffer& readBuffer) : mReadBuffer(readBuffer),
                                                  mIterator(readBuffer) {
   return;
 }
@@ -238,7 +237,7 @@ int Scanner::getNextLineLength(void) {
 }
 
 //-----------------------------------------------------------------------------------------
-lang::ReadBuffer& Scanner::getReadBuffer(void){
+io::ReadBuffer& Scanner::getReadBuffer(void){
   return this->mReadBuffer;
 }
 /* ****************************************************************************************

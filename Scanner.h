@@ -12,9 +12,10 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "lang/package-info.h"
-
-//-----------------------------------------------------------------------------------------
+#include "./../io/ReadBuffer.h"
+#include "./../lang/Data.h"
+#include "./../lang/Object.h"
+#include "./../util/Iterator.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -39,8 +40,8 @@ class util::Scanner : public lang::Object {
    * Variable <Private>
    */
  private:
-  lang::ReadBuffer& mReadBuffer;
-  lang::Iterator<char> mIterator;
+  io::ReadBuffer& mReadBuffer;
+  util::Iterator<char> mIterator;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -59,7 +60,7 @@ class util::Scanner : public lang::Object {
    *
    * @param readBuffer
    */
-  Scanner(lang::ReadBuffer& readBuffer);
+  Scanner(io::ReadBuffer& readBuffer);
 
   /**
    * @brief Destroy the Scanner object
@@ -152,7 +153,7 @@ class util::Scanner : public lang::Object {
    * - 緩衝區為空。
    * - 資料尚未滿足一行。
    */
-  virtual bool nextLine(Data& result);
+  virtual bool nextLine(lang::Data& result);
 
   /**
    * @brief 取得下一個整數。
@@ -188,7 +189,7 @@ class util::Scanner : public lang::Object {
    *  - result 內有效空間不足進行寫入。請使用getNextLength()來判斷緩衝區內資料大於result有效空間。
    *  - 緩衝區內不滿足一個字符串的條件，因緩衝區尚未出現NextSymbol<'/r','/n','/t','/0',' '>。
    */
-  virtual bool nextString(Data& result);
+  virtual bool nextString(lang::Data& result);
 
   /**
    * @brief 跳躍直到發現指定字元。
@@ -243,10 +244,10 @@ class util::Scanner : public lang::Object {
 
   /**
    * @brief 取得緩衝區來源
-   * 
-   * @return lang::ReadBuffer& 
+   *
+   * @return io::ReadBuffer&
    */
-  virtual lang::ReadBuffer& getReadBuffer(void);
+  virtual io::ReadBuffer& getReadBuffer(void);
 
   /* **************************************************************************************
    * Protected Method <Static>

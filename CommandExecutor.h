@@ -12,12 +12,13 @@
  */
 
 //-----------------------------------------------------------------------------------------
-#include "lang/package-info.h"
-
-//-----------------------------------------------------------------------------------------
-#include "./CommandHandler.h"
-#include "./CommandHandlerDefaultHelp.h"
-#include "./Scanner.h"
+#include "./../io/PrintBuffer.h"
+#include "./../lang/Executor.h"
+#include "./../lang/Strings.h"
+#include "./../util/ArrayMap.h"
+#include "./../util/CommandHandler.h"
+#include "./../util/CommandHandlerDefaultHelp.h"
+#include "./../util/Scanner.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -34,8 +35,8 @@ class util::CommandExecutor : public lang::Object,
   /* **************************************************************************************
    * Variable <Public>
    */
-  public:
-    static const char* TEXT_UNKNOWN_COMMAND;
+ public:
+  static const char* TEXT_UNKNOWN_COMMAND;
   /* **************************************************************************************
    * Variable <Protected>
    */
@@ -46,14 +47,15 @@ class util::CommandExecutor : public lang::Object,
  private:
   ArrayMap<lang::Object, CommandHandler> mCommandMap;
   CommandHandlerDefaultHelp mCommandHandlerDefaultHelp;
-  Strings mBuffer;
+  lang::Strings mBuffer;
   util::Scanner mInput;
-  lang::PrintBuffer& mOutput;
+  io::PrintBuffer& mOutput;
 
   CommandHandler* mCommandHandler;
   void* mAttachment;
   char mSplitCharacter;
-  bool mEchoEnable;
+  bool mPause;
+  bool mResult;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -75,7 +77,7 @@ class util::CommandExecutor : public lang::Object,
    * @param output 輸出
    * @param input 輸入
    */
-  CommandExecutor(int mapSize, int commandSize, lang::PrintBuffer& output, lang::ReadBuffer& input);
+  CommandExecutor(int mapSize, int commandSize, io::PrintBuffer& output, io::ReadBuffer& input);
 
   /**
    * @brief Destroy the Command Executor object
@@ -132,6 +134,19 @@ class util::CommandExecutor : public lang::Object,
     return this->mSplitCharacter;
   }
 
+  inline void pause(bool enable) {
+    this->mPause = enable;
+    return;
+  }
+
+  inline bool pause(void) {
+    return this->mPause;
+  }
+
+  inline bool getLastCommandResult(void) {
+    return this->mResult;
+  }
+
   /* **************************************************************************************
    * Public Method
    */
@@ -139,14 +154,14 @@ class util::CommandExecutor : public lang::Object,
   /**
    * @brief 取得輸出串流
    *
-   * @return lang::PrintBuffer&
+   * @return io::PrintBuffer&
    */
-  virtual lang::PrintBuffer& out(void);
+  virtual io::PrintBuffer& out(void);
 
   /**
    * @brief 取得輸入串流
    *
-   * @return lang::ReadBuffer&
+   * @return io::ReadBuffer&
    */
   virtual util::Scanner& in(void);
 
@@ -185,13 +200,6 @@ class util::CommandExecutor : public lang::Object,
    * @return Strings&
    */
   virtual Strings& getBuffer(void);
-
-  /**
-   * @brief 啟用輸入自動回復
-   *
-   * @param enable 啟用
-   */
-  virtual void echoEnable(bool enable);
 
   /* **************************************************************************************
    * Protected Method <Static>

@@ -64,11 +64,10 @@
 /* ****************************************************************************************
  * Include
  */
-
-//-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
 #include "./Base64.h"
+
+//-----------------------------------------------------------------------------------------
+#include "mframe_lang.h"
 
 /* ****************************************************************************************
  * Macro
@@ -92,12 +91,12 @@ using util::Base64;
  */
 
 //-----------------------------------------------------------------------------------------
-Base64::Base64(void){
+Base64::Base64(void) {
   return;
 }
 
 //-----------------------------------------------------------------------------------------
-Base64::~Base64(void){
+Base64::~Base64(void) {
   return;
 }
 
@@ -122,18 +121,18 @@ int Base64::encode(const void *src, int srcLen, void *dst, int dstLen) {
   int i;
   char *p;
 
-  if(this->encodeLen(srcLen) >= dstLen)
+  if (this->encodeLen(srcLen) >= dstLen)
     return 0;
 
-  p = static_cast<char*>(dst);
-  const unsigned char* str = reinterpret_cast<const unsigned char*>(src);
+  p = static_cast<char *>(dst);
+  const unsigned char *str = reinterpret_cast<const unsigned char *>(src);
 
   for (i = 0; i < srcLen - 2; i += 3) {
     *p++ = this->mTable[(str[i] >> 2) & 0x3F];
     *p++ = this->mTable[((str[i] & 0x3) << 4) |
-                    (static_cast<int>(str[i + 1] & 0xF0) >> 4)];
+                        (static_cast<int>(str[i + 1] & 0xF0) >> 4)];
     *p++ = this->mTable[((str[i + 1] & 0xF) << 2) |
-                    (static_cast<int>(str[i + 2] & 0xC0) >> 6)];
+                        (static_cast<int>(str[i + 2] & 0xC0) >> 6)];
     *p++ = this->mTable[str[i + 2] & 0x3F];
   }
   if (i < srcLen) {
@@ -143,14 +142,14 @@ int Base64::encode(const void *src, int srcLen, void *dst, int dstLen) {
       *p++ = '=';
     } else {
       *p++ = this->mTable[((str[i] & 0x3) << 4) |
-                      (static_cast<int>(str[i + 1] & 0xF0) >> 4)];
+                          (static_cast<int>(str[i + 1] & 0xF0) >> 4)];
       *p++ = this->mTable[((str[i + 1] & 0xF) << 2)];
     }
     *p++ = '=';
   }
 
-  *(p+1) = 0x00;
-  return p - static_cast<char*>(dst);
+  *(p + 1) = 0x00;
+  return p - static_cast<char *>(dst);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -201,8 +200,8 @@ int Base64::decode(const char *src, void *dst, int dstLen) {
     *(bufout++) =
         static_cast<unsigned char>(this->mPiexl[bufin[2]] << 6 | this->mPiexl[bufin[3]]);
   }
-  
-  *(bufout+1) = 0x00;
+
+  *(bufout + 1) = 0x00;
   nbytesdecoded -= (4 - nprbytes) & 3;
   return nbytesdecoded;
 }

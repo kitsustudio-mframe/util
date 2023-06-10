@@ -12,9 +12,8 @@
  */
 
 //-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-#include "./CommandHandler.h"
+#include "./../lang/Object.h"
+#include "./../util/CommandHandler.h"
 
 /* ****************************************************************************************
  * Namespace
@@ -39,10 +38,10 @@ class util::CommandHandlerEvent : public lang::Object,
   /* **************************************************************************************
    * Variable <Private>
    */
-  private:
-    bool (*mFunc)(CommandExecutor& executor);
-    const char* mCommand;
-    const char* mDescription;
+ private:
+  bool (*mFunc)(CommandExecutor& executor);
+  const char* mCommand;
+  const char* mDescription;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -58,8 +57,8 @@ class util::CommandHandlerEvent : public lang::Object,
  public:
   /**
    * @brief Construct a new Command Handler Event object
-   * 
-   * @param func 
+   *
+   * @param func
    * @param command 指令
    * @param descirption 指令描述
    */
@@ -67,8 +66,8 @@ class util::CommandHandlerEvent : public lang::Object,
 
   /**
    * @brief Construct a new Command Handler Event object
-   * 
-   * @param func 
+   *
+   * @param func
    * @param command 指令
    */
   CommandHandlerEvent(bool (*func)(CommandExecutor& executor), const char* command);

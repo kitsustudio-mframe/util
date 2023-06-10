@@ -8,13 +8,11 @@
 /* ****************************************************************************************
  * Include
  */
-
-//-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
 #include "./CommandHandlerDefaultHelp.h"
 
-#include "./CommandExecutor.h"
+//-----------------------------------------------------------------------------------------
+#include "mframe_lang.h"
+#include "mframe_util.h"
 
 /* ****************************************************************************************
  * Macro
@@ -73,7 +71,7 @@ const char* CommandHandlerDefaultHelp::getCommand(void) {
 //-----------------------------------------------------------------------------------------
 bool CommandHandlerDefaultHelp::onCommand(CommandExecutor& executor) {
   executor.in().skipNextLine();
-  executor.out() << "Help list:\n"
+  executor.out() << "Help list:\n";
   this->mCommandIterator.reset();
 
   CommandHandler* c = nullptr;

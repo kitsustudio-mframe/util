@@ -4,36 +4,34 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef UTIL_80396FB1_BC61_4C99_A388_F1ECB0AC5171
-#define UTIL_80396FB1_BC61_4C99_A388_F1ECB0AC5171
+#ifndef MFRAME_B378C414_2010_4F0A_BB93_F70AA7B4CD87
+#define MFRAME_B378C414_2010_4F0A_BB93_F70AA7B4CD87
 
 /* ****************************************************************************************
  * Include
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./../lang/Object.h"
-#include "./../util/CommandHandler.h"
-#include "./../util/Iterator.h"
+#include "./../lang/Consumer.h"
+#include "./../lang/Iterable.h"
 
 /* ****************************************************************************************
  * Namespace
  */
 namespace util {
-  class CommandHandlerDefaultHelp;
+  template <class E>
+  class Iterator;
 }
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::CommandHandlerDefaultHelp : public lang::Object,
-                                        public util::CommandHandler {
+template <class E>
+class util::Iterator : public lang::Object,
+                       public lang::Iterable<E> {
   /* **************************************************************************************
    * Variable <Public>
    */
- public:
-  static const char* TEXT_COMMAND;
-  static const char* TEXT_DESCRIPTION;
 
   /* **************************************************************************************
    * Variable <Protected>
@@ -43,7 +41,8 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    * Variable <Private>
    */
  private:
-  util::Iterator<CommandHandler*> mCommandIterator;
+  Iterable<E>& mIterable;
+  int mIndex;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -58,17 +57,22 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    */
  public:
   /**
-   * @brief Construct a new Command Handler Default Help object
+   * @brief Construct a new Iterator object
    *
-   * @param commandIterator
+   * @param iterable
    */
-  CommandHandlerDefaultHelp(const util::Iterator<CommandHandler*>& commandIterator);
+  Iterator(Iterable<E>& iterable) : mIterable(iterable) {
+    this->mIndex = 0;
+    return;
+  }
 
   /**
-   * @brief Destroy the Command Handler Default Help object
+   * @brief Destroy the Iterator object
    *
    */
-  virtual ~CommandHandlerDefaultHelp(void) override;
+  virtual ~Iterator(void) override {
+    return;
+  }
 
   /* **************************************************************************************
    * Operator Method
@@ -79,17 +83,68 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override>
+   * Public Method <Override> - lang::Iterable<E>
    */
  public:
-  virtual const char* getDescription(void) override;
+  virtual bool peekIndex(int index, E& result) override {
+    return this->mIterable.peekIndex(index, result);
+  }
 
-  virtual const char* getCommand(void) override;
-
-  virtual bool onCommand(CommandExecutor& executor) override;
   /* **************************************************************************************
    * Public Method
    */
+ public:
+  /**
+   * @brief 對每個剩餘元素執行給定的操作，直到所有元素都被處理或動作。
+   *
+   * 如果指定了該順序，則按迭代的順序執行操作。
+   *
+   * @param action
+   */
+  virtual void forEachRemaining(Consumer<E&>& action) {
+    E e;
+    while (this->next(e)) {
+      action.accept(e);
+    }
+    return;
+  }
+
+  /**
+   * @brief 如果迭代具有更多的元素，則返回true。
+   *
+   * 換句話說，如果next()返回true，則返回true
+   *
+   * @return true 如果迭代有更多的元素
+   * @return false 迭代中已經沒有新的元素
+   */
+  virtual bool hasNext(void) {
+    E cache;
+    return this->mIterable.peekIndex(this->mIndex, cache);
+  }
+
+  /**
+   * @brief 返回迭代中的下一個元素。
+   *
+   * @param result 結果
+   * @return true 返回成功
+   * @return false 返回失敗，已迭代至尾端
+   */
+  virtual bool next(E& result) {
+    bool status = this->mIterable.peekIndex(this->mIndex, result);
+    if (status)
+      ++this->mIndex;
+
+    return status;
+  }
+
+  /**
+   * @brief 重設此迭代器，將指針歸零可從同重新訪問
+   *
+   */
+  virtual Iterator<E>& reset(void) {
+    this->mIndex = 0;
+    return *this;
+  }
 
   /* **************************************************************************************
    * Protected Method <Static>
@@ -120,4 +175,4 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
  * End of file
  */
 
-#endif /* UTIL_80396FB1_BC61_4C99_A388_F1ECB0AC5171 */
+#endif /* MFRAME_B378C414_2010_4F0A_BB93_F70AA7B4CD87 */

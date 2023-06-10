@@ -4,36 +4,32 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#ifndef UTIL_80396FB1_BC61_4C99_A388_F1ECB0AC5171
-#define UTIL_80396FB1_BC61_4C99_A388_F1ECB0AC5171
+#ifndef MFRAME_2564A55F_C25D_43D2_ADD6_BE125D634CFB
+#define MFRAME_2564A55F_C25D_43D2_ADD6_BE125D634CFB
 
 /* ****************************************************************************************
  * Include
  */
 
 //-----------------------------------------------------------------------------------------
-#include "./../lang/Object.h"
-#include "./../util/CommandHandler.h"
-#include "./../util/Iterator.h"
+#include "./../lang/Memory.h"
+#include "./../util/Map.h"
 
 /* ****************************************************************************************
  * Namespace
  */
 namespace util {
-  class CommandHandlerDefaultHelp;
+  class ArrayMapPrototype;
 }
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::CommandHandlerDefaultHelp : public lang::Object,
-                                        public util::CommandHandler {
+class util::ArrayMapPrototype : public lang::Object,
+                                public util::Collection<void*> {
   /* **************************************************************************************
    * Variable <Public>
    */
- public:
-  static const char* TEXT_COMMAND;
-  static const char* TEXT_DESCRIPTION;
 
   /* **************************************************************************************
    * Variable <Protected>
@@ -43,7 +39,8 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    * Variable <Private>
    */
  private:
-  util::Iterator<CommandHandler*> mCommandIterator;
+  lang::Memory mMemory;
+  int mSize;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -56,19 +53,26 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
   /* **************************************************************************************
    * Construct Method
    */
- public:
+ protected:
   /**
-   * @brief Construct a new Command Handler Default Help object
+   * @brief Construct a new Array Map Prototype object
    *
-   * @param commandIterator
+   * @param memory 緩存來源
    */
-  CommandHandlerDefaultHelp(const util::Iterator<CommandHandler*>& commandIterator);
+  ArrayMapPrototype(const lang::Memory& memory);
 
   /**
-   * @brief Destroy the Command Handler Default Help object
+   * @brief Destroy the Array Map Prototype object
+   *
+   * @param size 元素數量
+   */
+  ArrayMapPrototype(int size);
+
+  /**
+   * @brief Destroy the Array Map Prototype object
    *
    */
-  virtual ~CommandHandlerDefaultHelp(void) override;
+  virtual ~ArrayMapPrototype(void) override;
 
   /* **************************************************************************************
    * Operator Method
@@ -79,18 +83,31 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override>
+   * Public Method <Override> - lang::Iterable<void*>
    */
  public:
-  virtual const char* getDescription(void) override;
+  virtual bool peekIndex(int index, void*& result) override;
 
-  virtual const char* getCommand(void) override;
+  /* **************************************************************************************
+   * Public Method <Override> - lang::Collection<void*>
+   */
+ public:
+  virtual void clear(void) override;
 
-  virtual bool onCommand(CommandExecutor& executor) override;
+  virtual bool isEmpty(void) const override;
+
+  virtual int size(void) const override;
+
   /* **************************************************************************************
    * Public Method
    */
-
+ public:
+  /**
+   * @brief 返回此集合的容量
+   *
+   * @return int
+   */
+  int length(void) const;
   /* **************************************************************************************
    * Protected Method <Static>
    */
@@ -102,7 +119,18 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
   /* **************************************************************************************
    * Protected Method
    */
+ protected:
+  bool prototypeContainsKey(Interface& key) const;
 
+  bool prototypeContainsValue(void* value) const;
+
+  void* prototypeGet(Interface& key) const;
+
+  void* prototypePut(Interface& key, void* value);
+
+  void* prototypeRemove(Interface& key);
+
+  void* prototypeReplace(Interface& key, void* value);
   /* **************************************************************************************
    * Private Method <Static>
    */
@@ -120,4 +148,4 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
  * End of file
  */
 
-#endif /* UTIL_80396FB1_BC61_4C99_A388_F1ECB0AC5171 */
+#endif /* MFRAME_2564A55F_C25D_43D2_ADD6_BE125D634CFB */
