@@ -19,16 +19,16 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <class T>
   struct Collection;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
 template <class T>
-struct util::Collection : public virtual lang::Iterable<T> {
+struct mframe::util::Collection : public virtual mframe::lang::Iterable<T> {
   /* ****************************************************************************
    * Variable <Public>
    */

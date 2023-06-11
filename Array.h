@@ -19,16 +19,16 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <typename E>
   class Array;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
 template <typename E>
-class util::Array : public util::ArrayPrototype {
+class mframe::util::Array : public mframe::util::ArrayPrototype {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -58,7 +58,7 @@ class util::Array : public util::ArrayPrototype {
    *
    * @param memory
    */
-  Array(const lang::Memory& memory) : util::ArrayPrototype(memory, sizeof(E)) {
+  Array(const mframe::lang::Memory& memory) : mframe::util::ArrayPrototype(memory, sizeof(E)) {
     return;
   }
 
@@ -68,7 +68,7 @@ class util::Array : public util::ArrayPrototype {
    * @param e
    * @param length
    */
-  Array(E* e, size_t length) : util::ArrayPrototype(lang::Memory(e, sizeof(E) * length), sizeof(E)) {
+  Array(E* e, size_t length) : mframe::util::ArrayPrototype(mframe::lang::Memory(e, sizeof(E) * length), sizeof(E)) {
     return;
   }
 
@@ -78,7 +78,7 @@ class util::Array : public util::ArrayPrototype {
    * @param e
    * @param length
    */
-  Array(const E* e, size_t length) : util::ArrayPrototype(lang::Memory(e, sizeof(E) * length), sizeof(E)) {
+  Array(const E* e, size_t length) : mframe::util::ArrayPrototype(mframe::lang::Memory(e, sizeof(E) * length), sizeof(E)) {
     return;
   }
 
@@ -87,7 +87,7 @@ class util::Array : public util::ArrayPrototype {
    *
    * @param length
    */
-  Array(size_t length) : util::ArrayPrototype(length, sizeof(E)) {
+  Array(size_t length) : mframe::util::ArrayPrototype(length, sizeof(E)) {
     return;
   }
 

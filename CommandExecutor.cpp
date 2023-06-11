@@ -20,11 +20,9 @@
 /* ****************************************************************************************
  * Using
  */
+using mframe::util::CommandExecutor;
 
 //-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-using util::CommandExecutor;
 
 /* ****************************************************************************************
  * Variable <Static>
@@ -37,12 +35,12 @@ const char* CommandExecutor::TEXT_UNKNOWN_COMMAND = "unknown command please try 
 
 //-----------------------------------------------------------------------------------------
 CommandExecutor::CommandExecutor(int mapSize, int commandSize,
-                                 io::PrintBuffer& output,
-                                 io::ReadBuffer& input) : mCommandMap(mapSize),
-                                                            mCommandHandlerDefaultHelp(Iterator<CommandHandler*>(mCommandMap)),
-                                                            mBuffer(static_cast<size_t>(commandSize)),
-                                                            mInput(input),
-                                                            mOutput(output) {
+                                 mframe::io::PrintBuffer& output,
+                                 mframe::io::ReadBuffer& input) : mCommandMap(mapSize),
+                                                                  mCommandHandlerDefaultHelp(Iterator<CommandHandler*>(mCommandMap)),
+                                                                  mBuffer(static_cast<size_t>(commandSize)),
+                                                                  mInput(input),
+                                                                  mOutput(output) {
   this->mCommandHandler = nullptr;
   this->mPause = false;
   this->mResult = false;
@@ -64,7 +62,7 @@ CommandExecutor::~CommandExecutor(void) {
  */
 
 /* ****************************************************************************************
- * Public Method <Override> - lang::Executor
+ * Public Method <Override> - mframe::lang::Executor
  */
 
 //-----------------------------------------------------------------------------------------
@@ -109,7 +107,7 @@ void CommandExecutor::execute(void) {
 }
 
 /* ****************************************************************************************
- * Public Method <Override> - util::CommandHandler
+ * Public Method <Override> - mframe::util::CommandHandler
  */
 
 /* ****************************************************************************************
@@ -117,12 +115,12 @@ void CommandExecutor::execute(void) {
  */
 
 //-----------------------------------------------------------------------------------------
-io::PrintBuffer& CommandExecutor::out(void) {
+mframe::io::PrintBuffer& CommandExecutor::out(void) {
   return this->mOutput;
 }
 
 //-----------------------------------------------------------------------------------------
-util::Scanner& CommandExecutor::in(void) {
+mframe::util::Scanner& CommandExecutor::in(void) {
   return this->mInput;
 }
 
@@ -140,7 +138,7 @@ bool CommandExecutor::put(CommandHandler& commandHandler) {
 
 //-----------------------------------------------------------------------------------------
 
-util::CommandHandler* CommandExecutor::get(const char* command) {
+mframe::util::CommandHandler* CommandExecutor::get(const char* command) {
   Hashcode h = Hashcode(HashGenerator::getHashcodeLowerCast(command));
   return this->mCommandMap.get(h);
 }

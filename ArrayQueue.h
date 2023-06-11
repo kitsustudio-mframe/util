@@ -20,17 +20,17 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <class E>
   class ArrayQueue;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-template <class E = lang::Interface>
-class util::ArrayQueue : public util::ArrayQueuePrototype,
-                         public lang::Queue<E> {
+template <class E = mframe::lang::Interface>
+class mframe::util::ArrayQueue : public mframe::util::ArrayQueuePrototype,
+                                 public mframe::lang::Queue<E> {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -61,7 +61,7 @@ class util::ArrayQueue : public util::ArrayQueuePrototype,
    *
    * @param memory
    */
-  ArrayQueue(const Memory& memory) : util::ArrayQueuePrototype(memory) {
+  ArrayQueue(const Memory& memory) : mframe::util::ArrayQueuePrototype(memory) {
     return;
   }
 
@@ -70,7 +70,7 @@ class util::ArrayQueue : public util::ArrayQueuePrototype,
    *
    * @param length
    */
-  ArrayQueue(uint32_t length) : util::ArrayQueuePrototype(length) {
+  ArrayQueue(uint32_t length) : mframe::util::ArrayQueuePrototype(length) {
     return;
   }
 
@@ -91,7 +91,7 @@ class util::ArrayQueue : public util::ArrayQueuePrototype,
    */
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Queue<E>
+   * Public Method <Override> - mframe::lang::Queue<E>
    */
  public:
   virtual bool offer(E* e) override {
@@ -107,7 +107,7 @@ class util::ArrayQueue : public util::ArrayQueuePrototype,
   }
 
   /* ****************************************************************************
-   * Public Method <Override> - util::Collection<E>
+   * Public Method <Override> - mframe::util::Collection<E>
    */
  public:
   virtual void clear(void) override {
@@ -123,7 +123,7 @@ class util::ArrayQueue : public util::ArrayQueuePrototype,
   }
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Iteraable<E>
+   * Public Method <Override> - mframe::lang::Iteraable<E>
    */
  public:
   virtual bool peekIndex(int index, E*& result) override {

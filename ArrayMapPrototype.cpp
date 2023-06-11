@@ -27,11 +27,9 @@ typedef struct {
 /* ****************************************************************************************
  * Using
  */
+using mframe::util::ArrayMapPrototype;
 
 //-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-using util::ArrayMapPrototype;
 
 /* ****************************************************************************************
  * Variable <Static>
@@ -42,7 +40,7 @@ using util::ArrayMapPrototype;
  */
 
 //-----------------------------------------------------------------------------------------
-ArrayMapPrototype::ArrayMapPrototype(const lang::Memory& memory) : mMemory(memory) {
+ArrayMapPrototype::ArrayMapPrototype(const mframe::lang::Memory& memory) : mMemory(memory) {
   this->mMemory.wipe();
   this->mSize = 0;
   return;
@@ -67,7 +65,7 @@ ArrayMapPrototype::~ArrayMapPrototype(void) {
  */
 
 /* ****************************************************************************************
- * Public Method <Override> - lang::Iterable<E>
+ * Public Method <Override> - mframe::lang::Iterable<E>
  */
 //-----------------------------------------------------------------------------------------
 bool ArrayMapPrototype::peekIndex(int index, void*& result) {
@@ -83,7 +81,7 @@ bool ArrayMapPrototype::peekIndex(int index, void*& result) {
 }
 
 /* ****************************************************************************************
- * Public Method <Override> - lang::Collection<E>
+ * Public Method <Override> - mframe::lang::Collection<E>
  */
 
 //-----------------------------------------------------------------------------------------
@@ -106,7 +104,7 @@ int ArrayMapPrototype::size(void) const {
 }
 
 /* ****************************************************************************************
- * Public Method <Override> - util::Map<V>
+ * Public Method <Override> - mframe::util::Map<V>
  */
 
 //-----------------------------------------------------------------------------------------

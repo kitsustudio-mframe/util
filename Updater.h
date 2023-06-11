@@ -14,19 +14,17 @@
 //-------------------------------------------------------------------------------
 #include "./../lang/Interface.h"
 
-//-------------------------------------------------------------------------------
-
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   struct Updater;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct/Enum
  */
-struct lang::Updater : public virtual lang::Interface {
+struct mframe::lang::Updater : public virtual mframe::lang::Interface {
   /* ****************************************************************************
    * Method
    */

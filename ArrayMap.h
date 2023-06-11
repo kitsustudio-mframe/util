@@ -17,16 +17,16 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <class K, class V>
   class ArrayMap;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-template <class K = lang::Interface, class V = lang::Interface>
-class util::ArrayMap : public util::ArrayMapPrototype, public util::Map<K, V> {
+template <class K = mframe::lang::Interface, class V = mframe::lang::Interface>
+class mframe::util::ArrayMap : public mframe::util::ArrayMapPrototype, public mframe::util::Map<K, V> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -56,7 +56,7 @@ class util::ArrayMap : public util::ArrayMapPrototype, public util::Map<K, V> {
    *
    * @param memory
    */
-  ArrayMap(const lang::Memory& memory) : ArrayMapPrototype(memory) {
+  ArrayMap(const mframe::lang::Memory& memory) : ArrayMapPrototype(memory) {
     return;
   }
 
@@ -86,7 +86,7 @@ class util::ArrayMap : public util::ArrayMapPrototype, public util::Map<K, V> {
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Iterable<E>
+   * Public Method <Override> - mframe::lang::Iterable<E>
    */
  public:
   virtual bool peekIndex(int index, V*& result) override {
@@ -99,7 +99,7 @@ class util::ArrayMap : public util::ArrayMapPrototype, public util::Map<K, V> {
   }
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Collection<E>
+   * Public Method <Override> - mframe::lang::Collection<E>
    */
  public:
   virtual void clear(void) override {
@@ -115,7 +115,7 @@ class util::ArrayMap : public util::ArrayMapPrototype, public util::Map<K, V> {
   }
 
   /* **************************************************************************************
-   * Public Method <Override> - util::Map<V>
+   * Public Method <Override> - mframe::util::Map<V>
    */
  public:
   virtual bool containsKey(K& key) const override {
@@ -170,7 +170,7 @@ class util::ArrayMap : public util::ArrayMapPrototype, public util::Map<K, V> {
    * Private Method
    */
  private:
-  using util::ArrayMapPrototype::peekIndex;
+  using mframe::util::ArrayMapPrototype::peekIndex;
 };
 
 /* ****************************************************************************************

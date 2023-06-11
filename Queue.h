@@ -18,16 +18,16 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace lang {
+namespace mframe::lang {
   template <typename E>
   struct Queue;
-}
+}  // namespace mframe::lang
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
 template <typename E>
-struct lang::Queue : public util::Collection<E*> {
+struct mframe::lang::Queue : public mframe::util::Collection<E*> {
   /* ****************************************************************************
    * Method
    */

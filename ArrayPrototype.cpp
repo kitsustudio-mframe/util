@@ -16,9 +16,10 @@
 /* ******************************************************************************
  * Using
  */
-using lang::Memory;
-using lang::Pointers;
-using util::ArrayPrototype;
+using mframe::util::ArrayPrototype;
+//-------------------------------------------------------------------------------
+using mframe::lang::Memory;
+using mframe::lang::Pointers;
 
 /* ******************************************************************************
  * Variable <Static>

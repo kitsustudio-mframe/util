@@ -23,15 +23,15 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class CommandExecutor;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::CommandExecutor : public lang::Object,
-                              public lang::Executor {
+class mframe::util::CommandExecutor : public mframe::lang::Object,
+                                      public mframe::lang::Executor {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -45,11 +45,11 @@ class util::CommandExecutor : public lang::Object,
    * Variable <Private>
    */
  private:
-  ArrayMap<lang::Object, CommandHandler> mCommandMap;
+  ArrayMap<mframe::lang::Object, CommandHandler> mCommandMap;
   CommandHandlerDefaultHelp mCommandHandlerDefaultHelp;
-  lang::Strings mBuffer;
-  util::Scanner mInput;
-  io::PrintBuffer& mOutput;
+  mframe::lang::Strings mBuffer;
+  mframe::util::Scanner mInput;
+  mframe::io::PrintBuffer& mOutput;
 
   CommandHandler* mCommandHandler;
   void* mAttachment;
@@ -77,7 +77,7 @@ class util::CommandExecutor : public lang::Object,
    * @param output 輸出
    * @param input 輸入
    */
-  CommandExecutor(int mapSize, int commandSize, io::PrintBuffer& output, io::ReadBuffer& input);
+  CommandExecutor(int mapSize, int commandSize, mframe::io::PrintBuffer& output, mframe::io::ReadBuffer& input);
 
   /**
    * @brief Destroy the Command Executor object
@@ -94,7 +94,7 @@ class util::CommandExecutor : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Executor
+   * Public Method <Override> - mframe::lang::Executor
    */
  public:
   virtual void execute(void) override;
@@ -154,16 +154,16 @@ class util::CommandExecutor : public lang::Object,
   /**
    * @brief 取得輸出串流
    *
-   * @return io::PrintBuffer&
+   * @return mframe::io::PrintBuffer&
    */
-  virtual io::PrintBuffer& out(void);
+  virtual mframe::io::PrintBuffer& out(void);
 
   /**
    * @brief 取得輸入串流
    *
-   * @return io::ReadBuffer&
+   * @return mframe::io::ReadBuffer&
    */
-  virtual util::Scanner& in(void);
+  virtual mframe::util::Scanner& in(void);
 
   /**
    * @brief 新增指令

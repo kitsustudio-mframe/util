@@ -17,15 +17,15 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   struct CommandHandler;
   class CommandExecutor;
-}  // namespace util
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-struct util::CommandHandler : public virtual lang::Interface {
+struct mframe::util::CommandHandler : public virtual mframe::lang::Interface {
   /* **************************************************************************************
    * Method
    */

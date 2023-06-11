@@ -18,15 +18,15 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class CommandHandlerEvent;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::CommandHandlerEvent : public lang::Object,
-                                  public util::CommandHandler {
+class mframe::util::CommandHandlerEvent : public mframe::lang::Object,
+                                          public mframe::util::CommandHandler {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -87,7 +87,7 @@ class util::CommandHandlerEvent : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - util::CommandHandler
+   * Public Method <Override> - mframe::util::CommandHandler
    */
  public:
   virtual const char* getDescription(void) override;

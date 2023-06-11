@@ -18,14 +18,14 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class ArrayPrototype;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-class util::ArrayPrototype : public lang::Memory {
+class mframe::util::ArrayPrototype : public mframe::lang::Memory {
   /* ****************************************************************************
    * Variable <Public>
    */
@@ -59,7 +59,7 @@ class util::ArrayPrototype : public lang::Memory {
    * @param memory
    * @param elementSize
    */
-  ArrayPrototype(const lang::Memory& memory, size_t elementSize);
+  ArrayPrototype(const mframe::lang::Memory& memory, size_t elementSize);
 
   /**
    * @brief Construct a new Array Prototype object

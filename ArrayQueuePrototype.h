@@ -20,15 +20,15 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class ArrayQueuePrototype;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class Object
  */
-class util::ArrayQueuePrototype : public util::Array<void*>,
-                                  public util::Collection<void*> {
+class mframe::util::ArrayQueuePrototype : public mframe::util::Array<void*>,
+                                          public mframe::util::Collection<void*> {
   /* ****************************************************************************
    * Subclass
    */
@@ -66,7 +66,7 @@ class util::ArrayQueuePrototype : public util::Array<void*>,
    *
    * @param memory
    */
-  ArrayQueuePrototype(const lang::Memory& memory);
+  ArrayQueuePrototype(const mframe::lang::Memory& memory);
 
   /**
    * @brief Construct a new Array Queue Prototype object
@@ -90,7 +90,7 @@ class util::ArrayQueuePrototype : public util::Array<void*>,
    */
 
   /* ****************************************************************************
-   * Public Method <Override> - util::Collection<void*>
+   * Public Method <Override> - mframe::util::Collection<void*>
    */
  public:
   virtual void clear(void) override;
@@ -100,7 +100,7 @@ class util::ArrayQueuePrototype : public util::Array<void*>,
   virtual int size(void) const override;
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::Iterable<void*>
+   * Public Method <Override> - mframe::lang::Iterable<void*>
    */
  public:
   virtual bool peekIndex(int index, void*& result) override;
@@ -128,7 +128,7 @@ class util::ArrayQueuePrototype : public util::Array<void*>,
    */
 
   /* ****************************************************************************
-   * Protected Method <Override> - lang::Memroy
+   * Protected Method <Override> - mframe::lang::Memroy
    */
 
   /* ****************************************************************************
@@ -164,7 +164,7 @@ class util::ArrayQueuePrototype : public util::Array<void*>,
    * @param attachment
    * @param action
    */
-  void foreachPrototype(lang::Consumer<void*>& action) const;
+  void foreachPrototype(mframe::lang::Consumer<void*>& action) const;
 
   /* ****************************************************************************
    * Private Method <Static>

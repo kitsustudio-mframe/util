@@ -17,17 +17,17 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <class C>
   class CommandHandlerMethod;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class C>
-class util::CommandHandlerMethod : public lang::FunctionMethod<C, CommandExecutor&, bool>,
-                                   public util::CommandHandler {
+class mframe::util::CommandHandlerMethod : public mframe::lang::FunctionMethod<C, CommandExecutor&, bool>,
+                                           public mframe::util::CommandHandler {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -58,7 +58,7 @@ class util::CommandHandlerMethod : public lang::FunctionMethod<C, CommandExecuto
   CommandHandlerMethod(C& c,
                        bool (C::*method)(CommandExecutor&),
                        const char* command,
-                       const char* description) : lang::FunctionMethod<C, CommandExecutor&, bool>(c, method) {
+                       const char* description) : mframe::lang::FunctionMethod<C, CommandExecutor&, bool>(c, method) {
     this->mDescription = description;
     this->mCommand = command;
     return;

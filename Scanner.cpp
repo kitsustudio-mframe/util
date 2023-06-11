@@ -20,11 +20,9 @@
 /* ****************************************************************************************
  * Using
  */
+using mframe::util::Scanner;
 
 //-----------------------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------------------
-using util::Scanner;
 
 /* ****************************************************************************************
  * Variable <Static>
@@ -35,8 +33,8 @@ using util::Scanner;
  */
 
 //-----------------------------------------------------------------------------------------
-Scanner::Scanner(io::ReadBuffer& readBuffer) : mReadBuffer(readBuffer),
-                                                 mIterator(readBuffer) {
+Scanner::Scanner(mframe::io::ReadBuffer& readBuffer) : mReadBuffer(readBuffer),
+                                                       mIterator(readBuffer) {
   return;
 }
 
@@ -237,7 +235,7 @@ int Scanner::getNextLineLength(void) {
 }
 
 //-----------------------------------------------------------------------------------------
-io::ReadBuffer& Scanner::getReadBuffer(void){
+mframe::io::ReadBuffer& Scanner::getReadBuffer(void) {
   return this->mReadBuffer;
 }
 /* ****************************************************************************************

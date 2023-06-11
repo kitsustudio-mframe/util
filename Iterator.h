@@ -18,17 +18,17 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <class E>
   class Iterator;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
 template <class E>
-class util::Iterator : public lang::Object,
-                       public lang::Iterable<E> {
+class mframe::util::Iterator : public mframe::lang::Object,
+                               public mframe::lang::Iterable<E> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -83,7 +83,7 @@ class util::Iterator : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Iterable<E>
+   * Public Method <Override> - mframe::lang::Iterable<E>
    */
  public:
   virtual bool peekIndex(int index, E& result) override {

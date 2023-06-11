@@ -19,15 +19,15 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class CommandHandlerDefaultHelp;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::CommandHandlerDefaultHelp : public lang::Object,
-                                        public util::CommandHandler {
+class mframe::util::CommandHandlerDefaultHelp : public mframe::lang::Object,
+                                                public mframe::util::CommandHandler {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -43,7 +43,7 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    * Variable <Private>
    */
  private:
-  util::Iterator<CommandHandler*> mCommandIterator;
+  mframe::util::Iterator<CommandHandler*> mCommandIterator;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -62,7 +62,7 @@ class util::CommandHandlerDefaultHelp : public lang::Object,
    *
    * @param commandIterator
    */
-  CommandHandlerDefaultHelp(const util::Iterator<CommandHandler*>& commandIterator);
+  CommandHandlerDefaultHelp(const mframe::util::Iterator<CommandHandler*>& commandIterator);
 
   /**
    * @brief Destroy the Command Handler Default Help object

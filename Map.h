@@ -18,10 +18,10 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   template <class K, class V>
   struct Map;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/Interface/Struct
@@ -33,7 +33,7 @@ namespace util {
  * @tparam V Value
  */
 template <class K, class V>
-struct util::Map : public virtual util::Collection<V*> {
+struct mframe::util::Map : public mframe::util::Collection<V*> {
   /* ****************************************************************************
    * Method
    */

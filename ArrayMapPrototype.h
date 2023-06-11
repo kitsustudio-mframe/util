@@ -18,15 +18,15 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class ArrayMapPrototype;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::ArrayMapPrototype : public lang::Object,
-                                public util::Collection<void*> {
+class mframe::util::ArrayMapPrototype : public mframe::lang::Object,
+                                        public mframe::util::Collection<void*> {
   /* **************************************************************************************
    * Variable <Public>
    */
@@ -39,7 +39,7 @@ class util::ArrayMapPrototype : public lang::Object,
    * Variable <Private>
    */
  private:
-  lang::Memory mMemory;
+  mframe::lang::Memory mMemory;
   int mSize;
 
   /* **************************************************************************************
@@ -59,7 +59,7 @@ class util::ArrayMapPrototype : public lang::Object,
    *
    * @param memory 緩存來源
    */
-  ArrayMapPrototype(const lang::Memory& memory);
+  ArrayMapPrototype(const mframe::lang::Memory& memory);
 
   /**
    * @brief Destroy the Array Map Prototype object
@@ -83,13 +83,13 @@ class util::ArrayMapPrototype : public lang::Object,
    */
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Iterable<void*>
+   * Public Method <Override> - mframe::lang::Iterable<void*>
    */
  public:
   virtual bool peekIndex(int index, void*& result) override;
 
   /* **************************************************************************************
-   * Public Method <Override> - lang::Collection<void*>
+   * Public Method <Override> - mframe::lang::Collection<void*>
    */
  public:
   virtual void clear(void) override;

@@ -21,14 +21,14 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   struct Pool;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/Interface/Struct
  */
-struct util::Pool : public util::Collection<lang::Memory> {
+struct mframe::util::Pool : public mframe::util::Collection<mframe::lang::Memory> {
   /* ****************************************************************************
    * Method
    */
@@ -57,9 +57,9 @@ struct util::Pool : public util::Collection<lang::Memory> {
   /**
    * @brief
    *
-   * @return lang::Memory
+   * @return mframe::lang::Memory
    */
-  virtual lang::Memory allocMemory(void) abstract;
+  virtual mframe::lang::Memory allocMemory(void) abstract;
 
   /**
    * @brief Alloc memory from pool and copy element.

@@ -19,15 +19,15 @@
 /* ******************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class Future;
-}
+}  // namespace mframe::util
 
 /* ******************************************************************************
  * Class/struct/Struct/Enum
  */
-class util::Future : public lang::Object,
-                     public io::CompletionHandler<int, void*> {
+class mframe::util::Future : public mframe::lang::Object,
+                             public mframe::io::CompletionHandler<int, void*> {
   /* ****************************************************************************
    * Enum
    */
@@ -52,7 +52,7 @@ class util::Future : public lang::Object,
    */
  private:
   Status mStatus;
-  lang::Thread* mThread;
+  mframe::lang::Thread* mThread;
   int mResult;
 
   /* ****************************************************************************
@@ -88,7 +88,7 @@ class util::Future : public lang::Object,
    */
 
   /* ****************************************************************************
-   * Public Method <Override> - lang::CompletionHandler<int ,void*>
+   * Public Method <Override> - mframe::lang::CompletionHandler<int ,void*>
    */
  public:
   /**

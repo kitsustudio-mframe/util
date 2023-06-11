@@ -17,14 +17,14 @@
 /* ****************************************************************************************
  * Namespace
  */
-namespace util {
+namespace mframe::util {
   class Base64;
-}
+}  // namespace mframe::util
 
 /* ****************************************************************************************
  * Class/Interface/Struct/Enum
  */
-class util::Base64 : public lang::Object {
+class mframe::util::Base64 : public mframe::lang::Object {
   /* **************************************************************************************
    * Variable <Public>
    */
