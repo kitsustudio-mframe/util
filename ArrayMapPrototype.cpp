@@ -46,7 +46,7 @@ ArrayMapPrototype::ArrayMapPrototype(const mframe::lang::Memory& memory) : mMemo
   return;
 }
 
-ArrayMapPrototype::ArrayMapPrototype(int size) : mMemory(static_cast<size_t>(size * 8)) {
+ArrayMapPrototype::ArrayMapPrototype(int size) : mMemory(size * 8) {
   this->mMemory.wipe();
   this->mSize = 0;
   return;

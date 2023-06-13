@@ -41,7 +41,7 @@ ArrayQueuePrototype::ArrayQueuePrototype(const Memory& memory) : Array<void*>(me
 }
 
 //-------------------------------------------------------------------------------
-ArrayQueuePrototype::ArrayQueuePrototype(uint32_t size) : Array<void*>(size) {
+ArrayQueuePrototype::ArrayQueuePrototype(int size) : Array<void*>(size) {
   this->clear();
   return;
 }

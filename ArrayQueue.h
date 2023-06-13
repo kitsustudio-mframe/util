@@ -70,7 +70,7 @@ class mframe::util::ArrayQueue : public mframe::util::ArrayQueuePrototype,
    *
    * @param length
    */
-  ArrayQueue(uint32_t length) : mframe::util::ArrayQueuePrototype(length) {
+  ArrayQueue(int length) : mframe::util::ArrayQueuePrototype(length) {
     return;
   }
 

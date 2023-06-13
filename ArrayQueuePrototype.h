@@ -73,7 +73,7 @@ class mframe::util::ArrayQueuePrototype : public mframe::util::Array<void*>,
    *
    * @param size
    */
-  ArrayQueuePrototype(uint32_t size);
+  ArrayQueuePrototype(int size);
 
   /**
    * @brief Destroy the Array Queue Prototype object

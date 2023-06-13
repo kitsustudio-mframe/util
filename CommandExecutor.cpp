@@ -38,7 +38,7 @@ CommandExecutor::CommandExecutor(int mapSize, int commandSize,
                                  mframe::io::PrintBuffer& output,
                                  mframe::io::ReadBuffer& input) : mCommandMap(mapSize),
                                                                   mCommandHandlerDefaultHelp(Iterator<CommandHandler*>(mCommandMap)),
-                                                                  mBuffer(static_cast<size_t>(commandSize)),
+                                                                  mBuffer(commandSize),
                                                                   mInput(input),
                                                                   mOutput(output) {
   this->mCommandHandler = nullptr;

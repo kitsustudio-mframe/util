@@ -59,7 +59,7 @@ class mframe::util::ArrayPrototype : public mframe::lang::Memory {
    * @param memory
    * @param elementSize
    */
-  ArrayPrototype(const mframe::lang::Memory& memory, size_t elementSize);
+  ArrayPrototype(const mframe::lang::Memory& memory, int elementSize);
 
   /**
    * @brief Construct a new Array Prototype object
@@ -67,7 +67,7 @@ class mframe::util::ArrayPrototype : public mframe::lang::Memory {
    * @param length
    * @param elementSize
    */
-  ArrayPrototype(size_t length, size_t elementSize);
+  ArrayPrototype(int length, int elementSize);
 
   /**
    * @brief Destroy the Array Prototype object

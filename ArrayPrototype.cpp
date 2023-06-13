@@ -34,15 +34,15 @@ using mframe::lang::Pointers;
  */
 
 //-------------------------------------------------------------------------------
-ArrayPrototype::ArrayPrototype(const Memory& memory, size_t elementSize) : Memory(memory) {
-  this->mElementSize = static_cast<int>(elementSize);
+ArrayPrototype::ArrayPrototype(const Memory& memory, int elementSize) : Memory(memory) {
+  this->mElementSize = elementSize;
   this->mElementLength = (this->length() / this->mElementSize);
   return;
 }
 
 //-------------------------------------------------------------------------------
-ArrayPrototype::ArrayPrototype(size_t length, size_t elementSize) : Memory(length * elementSize) {
-  this->mElementSize = static_cast<int>(elementSize);
+ArrayPrototype::ArrayPrototype(int length, int elementSize) : Memory(length * elementSize) {
+  this->mElementSize = elementSize;
   this->mElementLength = this->length() / static_cast<int>(elementSize);
 }
 

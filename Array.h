@@ -68,7 +68,7 @@ class mframe::util::Array : public mframe::util::ArrayPrototype {
    * @param e
    * @param length
    */
-  Array(E* e, size_t length) : mframe::util::ArrayPrototype(mframe::lang::Memory(e, sizeof(E) * length), sizeof(E)) {
+  Array(E* e, int length) : mframe::util::ArrayPrototype(mframe::lang::Memory(e, sizeof(E) * length), sizeof(E)) {
     return;
   }
 
@@ -78,7 +78,7 @@ class mframe::util::Array : public mframe::util::ArrayPrototype {
    * @param e
    * @param length
    */
-  Array(const E* e, size_t length) : mframe::util::ArrayPrototype(mframe::lang::Memory(e, sizeof(E) * length), sizeof(E)) {
+  Array(const E* e, int length) : mframe::util::ArrayPrototype(mframe::lang::Memory(e, sizeof(E) * length), sizeof(E)) {
     return;
   }
 
@@ -87,7 +87,7 @@ class mframe::util::Array : public mframe::util::ArrayPrototype {
    *
    * @param length
    */
-  Array(size_t length) : mframe::util::ArrayPrototype(length, sizeof(E)) {
+  Array(int length) : mframe::util::ArrayPrototype(length, sizeof(E)) {
     return;
   }
 
