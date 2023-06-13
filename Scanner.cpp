@@ -118,7 +118,7 @@ bool Scanner::nextLine(Data& result) {
   if (length >= result.length())
     return false;
 
-  int status = this->mReadBuffer.poll(result, length);
+  int status = this->mReadBuffer.poll(result, length, false);
 
   // write 0x00 to end;
   *result.pointer(status, Class<char>::cast()) = 0x00;
@@ -140,7 +140,7 @@ bool Scanner::nextInteger(int& result) {
 
 //-----------------------------------------------------------------------------------------
 bool Scanner::nextChar(char& result) {
-  return this->mReadBuffer.pollByte(result);
+  return this->mReadBuffer.pollByte(result, false);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ bool Scanner::nextString(Data& result) {
   if (length >= result.length())
     return false;
 
-  int status = this->mReadBuffer.poll(result, length);
+  int status = this->mReadBuffer.poll(result, length, false);
 
   // write 0x00 to end;
   *result.pointer(status, Class<char>::cast()) = 0x00;

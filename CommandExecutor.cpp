@@ -88,7 +88,10 @@ void CommandExecutor::execute(void) {
 
     else {
       result = false;
-      this->out() << '\'' << this->mBuffer << "\' " << CommandExecutor::TEXT_UNKNOWN_COMMAND;
+      this->out() << '\'';
+      this->out() << this->mBuffer;
+      this->out() << "\' ";
+      this->out() << CommandExecutor::TEXT_UNKNOWN_COMMAND;
       this->in().skipNextLine();
     }
   }
@@ -96,11 +99,11 @@ void CommandExecutor::execute(void) {
   if (!this->mPause) {
     this->mResult = result;
     this->mCommandHandler = nullptr;
-
+    
     if (result)
-      this->mOutput << Character::CHAR_ACK << "\n>";
+      this->mOutput << "\n>";
     else
-      this->mOutput << Character::CHAR_NAK << "\n>";
+      this->mOutput << "\n>";
   }
 
   return;
