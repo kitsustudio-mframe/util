@@ -52,6 +52,7 @@ class mframe::util::CommandExecutor : public mframe::lang::Object,
   mframe::io::PrintBuffer& mOutput;
 
   CommandHandler* mCommandHandler;
+  const char* mHostname;
   void* mAttachment;
   char mSplitCharacter;
   bool mPause;
@@ -200,6 +201,20 @@ class mframe::util::CommandExecutor : public mframe::lang::Object,
    * @return Strings&
    */
   virtual Strings& getBuffer(void);
+
+  /**
+   * @brief Set the Hostname object
+   * 
+   * @param hostname 
+   */
+  virtual void setHostname(const char* hostname);
+
+  /**
+   * @brief Get the Hostname object
+   * 
+   * @return const char* 
+   */
+  virtual const char* getHostname(void);
 
   /* **************************************************************************************
    * Protected Method <Static>

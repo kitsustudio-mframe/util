@@ -44,6 +44,7 @@ CommandExecutor::CommandExecutor(int mapSize, int commandSize,
   this->mCommandHandler = nullptr;
   this->mPause = false;
   this->mResult = false;
+  this->mHostname = "";
   this->put(this->mCommandHandlerDefaultHelp);
   return;
 }
@@ -81,14 +82,23 @@ void CommandExecutor::execute(void) {
       return;
 
     this->mInput.nextString(this->mBuffer);
+    if(this->mBuffer.isEmpty()){
+      this->mOutput << '\n' << this->mHostname << "> ";
+      return;
+    }
+      
+
     Hashcode h = Hashcode(HashGenerator::getHashcodeLowerCast(this->mBuffer));
     this->mCommandHandler = this->mCommandMap.get(h);
-    if (this->mCommandHandler)
+    if (this->mCommandHandler){
+      this->out() << '\n';
       result = this->mCommandHandler->onCommand(*this);
+    }
+      
 
     else {
       result = false;
-      this->out() << '\'';
+      this->out() << "\n\'";
       this->out() << this->mBuffer;
       this->out() << "\' ";
       this->out() << CommandExecutor::TEXT_UNKNOWN_COMMAND;
@@ -99,13 +109,14 @@ void CommandExecutor::execute(void) {
   if (!this->mPause) {
     this->mResult = result;
     this->mCommandHandler = nullptr;
-    
+
     if (result)
-      this->mOutput << "\n>";
+      this->mOutput << Character::CHAR_ACK;
     else
-      this->mOutput << "\n>";
+      this->mOutput << Character::CHAR_NAK;
   }
 
+  this->mOutput << '\n' << this->mHostname << "> ";
   return;
 }
 
@@ -160,6 +171,19 @@ bool CommandExecutor::remove(const char* command) {
 //-----------------------------------------------------------------------------------------
 Strings& CommandExecutor::getBuffer(void) {
   return this->mBuffer;
+}
+
+//-----------------------------------------------------------------------------------------
+void CommandExecutor::setHostname(const char* hostname){
+  if(!hostname)
+    hostname = "";
+  
+  this->mHostname = hostname;
+}
+
+//-----------------------------------------------------------------------------------------
+const char* CommandExecutor::getHostname(void){
+  return this->mHostname;
 }
 
 /* ****************************************************************************************
