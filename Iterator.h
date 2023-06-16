@@ -43,6 +43,7 @@ class mframe::util::Iterator : public mframe::lang::Object,
  private:
   Iterable<E>& mIterable;
   int mIndex;
+  int mMark;
 
   /* **************************************************************************************
    * Abstract method <Public>
@@ -63,6 +64,7 @@ class mframe::util::Iterator : public mframe::lang::Object,
    */
   Iterator(Iterable<E>& iterable) : mIterable(iterable) {
     this->mIndex = 0;
+    this->mMark = 0;
     return;
   }
 
@@ -138,14 +140,38 @@ class mframe::util::Iterator : public mframe::lang::Object,
   }
 
   /**
-   * @brief 重設此迭代器，將指針歸零可從同重新訪問
+   * @brief 將此迭代器的位置重置為先前標記的位置。
+
+   * 調用此方法既不會更改也不丟棄該標記的值。
    *
+   * @return Iterator<E>& 這個迭代器。
    */
-  virtual Iterator<E>& reset(void) {
+  Iterator<E>& reset(void) {
+    this->mIndex = this->mMark;
+    return *this;
+  }
+
+  /**
+   * @brief 倒帶這個迭代器。位置設置為零，標記被丟棄。
+   *
+   * 在通道獲取操作的序列之前調用此方法，假設已經設置了相應的限制。
+   *
+   * @return Iterator<E>& 這個迭代器。
+   */
+  Iterator<E>& rewind(void) {
     this->mIndex = 0;
     return *this;
   }
 
+  /**
+   * @brief 將此迭代器的標記設置在其位置。
+   *
+   * @return Iterator<E>& 這個迭代器。
+   */
+  Iterator<E>& mark(void) {
+    this->mMark = this->mIndex;
+    return *this;
+  }
   /* **************************************************************************************
    * Protected Method <Static>
    */

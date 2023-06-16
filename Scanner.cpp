@@ -66,7 +66,7 @@ bool Scanner::hasNext(void) {
 
 //-----------------------------------------------------------------------------------------
 bool Scanner::hasNextChar(char ch) {
-  this->mIterator.reset();
+  this->mIterator.rewind();
   char c;
   while (this->mIterator.next(c)) {
     if (c == ch)
@@ -78,12 +78,12 @@ bool Scanner::hasNextChar(char ch) {
 
 //-----------------------------------------------------------------------------------------
 bool Scanner::hasNextBoolean(void) {
-  return Booleans::isBoolean(this->mIterator.reset());
+  return Booleans::isBoolean(this->mIterator.rewind());
 }
 
 //-----------------------------------------------------------------------------------------
 bool Scanner::hasNextInteger(void) {
-  return Integers::isInteger(this->mIterator.reset());
+  return Integers::isInteger(this->mIterator.rewind());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ bool Scanner::hasNextString(void) {
 
 //-----------------------------------------------------------------------------------------
 bool Scanner::nextBoolean(bool& result) {
-  bool status = Booleans::parseBoolean(result, this->mIterator.reset());
+  bool status = Booleans::parseBoolean(result, this->mIterator.rewind());
 
   if (status)
     this->skipNext();
@@ -129,7 +129,7 @@ bool Scanner::nextLine(Data& result) {
 
 //-----------------------------------------------------------------------------------------
 bool Scanner::nextInteger(int& result) {
-  this->mIterator.reset();
+  this->mIterator.rewind();
 
   if (!Integers::parseInteger(result, this->mIterator))
     return false;
@@ -167,7 +167,7 @@ bool Scanner::nextString(Data& result) {
 //-----------------------------------------------------------------------------------------
 int Scanner::skip(char pattern) {
   int result = 0;
-  this->mIterator.reset();
+  this->mIterator.rewind();
   char c;
 
   while (this->mIterator.next(c)) {
@@ -205,7 +205,7 @@ int Scanner::skipNextLine(void) {
 //-----------------------------------------------------------------------------------------
 int Scanner::getNextLength(void) {
   int result = 0;
-  this->mIterator.reset();
+  this->mIterator.rewind();
   char c;
 
   while (this->mIterator.next(c)) {
@@ -221,7 +221,7 @@ int Scanner::getNextLength(void) {
 //-----------------------------------------------------------------------------------------
 int Scanner::getNextLineLength(void) {
   int result = 0;
-  this->mIterator.reset();
+  this->mIterator.rewind();
   char c;
 
   while (this->mIterator.next(c)) {
@@ -255,7 +255,7 @@ mframe::io::ReadBuffer& Scanner::getReadBuffer(void) {
  */
 //-----------------------------------------------------------------------------------------
 int Scanner::skipNextSymbol(void) {
-  this->mIterator.reset();
+  this->mIterator.rewind();
   int result = 0;
   char c;
   while (this->mIterator.next(c)) {
@@ -273,7 +273,7 @@ int Scanner::skipNextSymbol(void) {
 
 //-----------------------------------------------------------------------------------------
 int Scanner::skipNextLineSymbol(void) {
-  this->mIterator.reset();
+  this->mIterator.rewind();
   int i = 0;
   char c;
   while (this->mIterator.next(c)) {
